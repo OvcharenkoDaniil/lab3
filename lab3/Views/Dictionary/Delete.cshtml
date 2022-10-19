@@ -1,0 +1,32 @@
+﻿@model lab3.Models.DictionaryItem 
+
+@{
+    ViewBag.Title = "Delete Page";
+    var q = Model.PhoneNumber;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Update</title>
+</head>
+<body>
+<div>
+    <h2>Are you sure you want to delete this record?</h2>
+    <form method="post" action="/Dictionary/DeleteSave" style="margin-top: 10px">
+        <div style="margin-bottom: 5px">
+            <label for="PhoneNumber" class="form-label">Phone Number</label>
+            <input type="text" readonly="readonly" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber">
+        </div>
+        <div style="margin-bottom: 5px">
+            <label for="Surname" class="form-label">Surname</label>
+            <input type="text" readonly="readonly" class="form-control" id="Surname" name="UserSurname" value="@Model.UserSurname">
+            <input hidden="hidden" name="UserId" value="@Model.UserId">
+        </div>
+        <button type="submit" class="btn btn-primary p-1">Delete</button>
+    </form>
+</div>
+</body>
+</html>

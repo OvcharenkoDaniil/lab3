@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using lab3.Models;
+using Newtonsoft.Json;
+using System.IO;
+
+namespace lab3.Controllers
+{
+    public class DictionaryController : Controller
+    {
+        private List<DictionaryItem> dictionaryItems = new List<DictionaryItem>();
+        private DirectoryRepository _directoryRepository = new DirectoryRepository();
+        
+        [HttpGet]
+        public ActionResult Index()
+        {
+            dictionaryItems = _directoryRepository.GetDirectoryList();
+            return View(dictionaryItems);
+        }
+
+        [HttpGet]
+        public ActionResult Update(string id)
+        {
+            var record = _directoryRepository.GetItemById(id);
+            return View(record);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateSave(DictionaryItem record)
+        {
+            _directoryRepository.Update(record);
+            return Redirect("/Dictionary/Index");
+        }
+        
+        [HttpPost]
+        public ActionResult DeleteSave(DictionaryItem record)
+        {
+            _directoryRepository.Delete(record);
+            return Redirect("/Dictionary/Index");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+            var record = _directoryRepository.GetItemById(id);
+            return View(record);
+        }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View(new DictionaryItem());
+        }
+        
+        [HttpPost]
+        public ActionResult AddSave(DictionaryItem record)
+        {
+            _directoryRepository.Add(record);
+            return Redirect("/Dictionary/Index");
+        }
+    }
+}

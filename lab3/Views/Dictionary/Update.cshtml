@@ -1,0 +1,30 @@
+﻿@model lab3.Models.DictionaryItem 
+
+@{
+    ViewBag.Title = "Update Page";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Update</title>
+</head>
+<body>
+<div>
+    <form method="post" action="/Dictionary/UpdateSave" style="margin-top: 10px">
+        <div style="margin-bottom: 5px">
+            <label for="PhoneNumber" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" value="@Model.PhoneNumber">
+        </div>
+        <div style="margin-bottom: 5px">
+            <label for="Surname" class="form-label">Surname</label>
+            <input type="text" class="form-control" id="Surname" name="UserSurname" value="@Model.UserSurname">
+            <input hidden="hidden" name="UserId" value="@Model.UserId">
+        </div>
+        <button type="submit" class="btn btn-primary p-1">Submit</button>
+    </form>
+</div>
+</body>
+</html>

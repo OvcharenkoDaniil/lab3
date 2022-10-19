@@ -1,0 +1,41 @@
+﻿@model List<lab3.Models.DictionaryItem>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div >
+
+    <table class="table" style="margin-top: 10px">
+        <thead>
+        <tr>
+            <th scope="col">PhoneNumber</th>
+            <th scope="col">Surname</th>
+            <th scope="col">RecordActions</th>
+        </tr>
+        </thead>
+        @if (Model.Count > 0)
+        {
+            foreach (var record in Model)
+            {
+                <tr>
+                    <td>@record.PhoneNumber</td>
+                    <td>@record.UserSurname</td>
+                    <td>
+                        <div class="btn">@Html.ActionLink("Edit", "Update", new { id = record.UserId })</div>
+                        <div class="btn">@Html.ActionLink("Delete", "Delete", new { id = record.UserId })</div>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td class="text-center" colspan="3">
+                    <h3>There are no records in dictionary yet!</h3>
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="btn">@Html.ActionLink("Add", "Add", "Dictionary")</div>
+
+</div>
