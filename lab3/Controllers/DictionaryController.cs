@@ -12,13 +12,14 @@ namespace lab3.Controllers
     public class DictionaryController : Controller
     {
         private List<DictionaryItem> dictionaryItems = new List<DictionaryItem>();
-        private DirectoryRepository _directoryRepository = new DirectoryRepository();
-        
+        //private DirectoryRepository _directoryRepository = new DirectoryRepository();
+        private DBRepository _directoryRepository = new DBRepository();
         [HttpGet]
         public ActionResult Index()
         {
             dictionaryItems = _directoryRepository.GetDirectoryList();
-            return View(dictionaryItems);
+            var sortedRecords = dictionaryItems.OrderBy(r => r.UserSurname).ToList();
+            return View(sortedRecords);
         }
 
         [HttpGet]

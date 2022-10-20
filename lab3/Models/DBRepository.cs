@@ -1,12 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using Newtonsoft.Json;
 
 namespace lab3.Models
 {
-    public class DirectoryRepository : IRepository<DictionaryItem>
+    public class DBRepository : IRepository<DictionaryItem>
     {
+        private readonly DictionaryDbContext _dbContext;
+        private readonly DbSet<DictionaryItem> _records;
+        public DBRepository()
+        {
+            _dbContext = new DictionaryDbContext();
+            //_records = _dbContext.Records;
+        }
+        
         string filePath2 = "D:\\Study\\Prog-in-internet\\Labs\\lab3\\lab3\\lab3\\Data\\Data.json";
         public void Dispose()
         {
@@ -15,7 +25,7 @@ namespace lab3.Models
 
         public List<DictionaryItem> GetDirectoryList()
         {
-            return JsonConvert.DeserializeObject<List<DictionaryItem>>(System.IO.File.ReadAllText(filePath2));
+            return _dbContext.DictionaryItems.ToList();
         }
 
         public DictionaryItem GetItemById(string id)
@@ -26,10 +36,9 @@ namespace lab3.Models
 
         public void Add(DictionaryItem item)
         {
-            var records = GetDirectoryList();
             item.UserId = generateID();
-            records.Add(item);
-            Save(records);
+            _dbContext.DictionaryItems.Add(item);
+            Save();
         }
         public string generateID()
         {
@@ -37,35 +46,31 @@ namespace lab3.Models
         }
         public void Update(DictionaryItem item)
         {
-            var records = GetDirectoryList();
-            var dictionaryItem =  records.FirstOrDefault(r => r.UserId == item.UserId);
+            var dictionaryItem =  _dbContext.DictionaryItems.FirstOrDefault(r => r.UserId == item.UserId);
             if (dictionaryItem is null)
             {
                 return;
             }
             dictionaryItem.PhoneNumber = item.PhoneNumber;
             dictionaryItem.UserSurname = item.UserSurname;
-            Save(records);
+            Save();
         }
 
         public void Delete(DictionaryItem item)
         {
-            var records = GetDirectoryList();
-            records =  records.Where(r => r.UserId != item.UserId).ToList();
-            Save(records);
+            var dictionaryItem = _dbContext.DictionaryItems.FirstOrDefault(r => r.UserId == item.UserId);
+            _dbContext.DictionaryItems.Remove(dictionaryItem);
+            Save();
         }
 
         public void Save(List<DictionaryItem> items)
         {
-            if (System.IO.File.Exists(filePath2))
-            {
-                System.IO.File.WriteAllText(filePath2,JsonConvert.SerializeObject(items));
-            }
+            throw new NotImplementedException();
         }
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _dbContext.SaveChanges();
         }
     }
 }

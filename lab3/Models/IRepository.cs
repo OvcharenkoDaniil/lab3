@@ -11,6 +11,7 @@ namespace lab3.Models
         void Add(T item); 
         void Update(T item);
         void Delete(T item); 
-        void Save(List<T> items);  
+        void Save(List<T> items);
+        void Save();
     }
 }

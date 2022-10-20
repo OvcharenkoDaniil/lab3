@@ -74,3 +74,7 @@ D:\Study\Prog-in-internet\Labs\lab3\lab3\lab3\obj\Debug\lab3.csproj.CoreCompileI
 D:\Study\Prog-in-internet\Labs\lab3\lab3\lab3\obj\Debug\lab3.csproj.CopyComplete
 D:\Study\Prog-in-internet\Labs\lab3\lab3\lab3\obj\Debug\lab3.dll
 D:\Study\Prog-in-internet\Labs\lab3\lab3\lab3\obj\Debug\lab3.pdb
+D:\Study\Prog-in-internet\Labs\lab3\lab3\lab3\bin\EntityFramework.dll
+D:\Study\Prog-in-internet\Labs\lab3\lab3\lab3\bin\EntityFramework.SqlServer.dll
+D:\Study\Prog-in-internet\Labs\lab3\lab3\lab3\bin\EntityFramework.xml
+D:\Study\Prog-in-internet\Labs\lab3\lab3\lab3\bin\EntityFramework.SqlServer.xml
