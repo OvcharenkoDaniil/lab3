@@ -62,5 +62,11 @@ namespace lab3.Controllers
             _directoryRepository.Add(record);
             return Redirect("/Dictionary/Index");
         }
+        
+        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        public string WrongPath()
+        {
+            return $"{Request.HttpMethod}: " + $"{Request.Url.AbsoluteUri} не поддерживается";
+        }
     }
 }
