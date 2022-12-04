@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace lab3.Models
+namespace DictionaryLibrary
 {
     public interface IRepository<T> : IDisposable 
         where T : class

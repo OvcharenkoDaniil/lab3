@@ -50,6 +50,18 @@
           <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.CSharp" />
+        <Reference Include="Ninject, Version=3.3.6.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+          <HintPath>..\packages\Ninject.3.3.6\lib\net45\Ninject.dll</HintPath>
+        </Reference>
+        <Reference Include="Ninject.Web.Common, Version=3.3.2.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+          <HintPath>..\packages\Ninject.Web.Common.3.3.2\lib\net45\Ninject.Web.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="Ninject.Web.Common.WebHost, Version=3.3.2.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+          <HintPath>..\packages\Ninject.Web.Common.WebHost.3.3.2\lib\net45\Ninject.Web.Common.WebHost.dll</HintPath>
+        </Reference>
+        <Reference Include="Ninject.Web.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+          <HintPath>..\packages\Ninject.MVC5.3.3.0\lib\net45\Ninject.Web.Mvc.dll</HintPath>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Data" />
         <Reference Include="System.Drawing" />
@@ -105,6 +117,9 @@
         <Reference Include="Newtonsoft.Json">
             <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
         </Reference>
+        <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+          <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+        </Reference>
         <Reference Include="WebGrease">
             <Private>True</Private>
             <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -124,14 +139,11 @@
         <Compile Include="App_Start\FilterConfig.cs" />
         <Compile Include="App_Start\RouteConfig.cs" />
         <Compile Include="Controllers\DictionaryController.cs" />
+        <Compile Include="DependencyInjection\Ninject.cs" />
         <Compile Include="Global.asax.cs">
             <DependentUpon>Global.asax</DependentUpon>
         </Compile>
-        <Compile Include="Models\DBRepository.cs" />
-        <Compile Include="Models\DictionaryDbContext.cs" />
-        <Compile Include="Models\DictionaryItem.cs" />
-        <Compile Include="Models\DirectoryRepository.cs" />
-        <Compile Include="Models\IRepository.cs" />
+        <Compile Include="Helpers\DirectoryHelper.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
     </ItemGroup>
     <ItemGroup>
@@ -166,6 +178,7 @@
         <Content Include="Scripts\modernizr-2.8.3.js" />
         <Content Include="Views\Dictionary\Add.cshtml" />
         <Content Include="Views\Dictionary\Delete.cshtml" />
+        <Content Include="Views\Dictionary\DictionaryItem.cshtml" />
         <Content Include="Views\Dictionary\Index.cshtml" />
         <Content Include="Views\Dictionary\Update.cshtml" />
         <Content Include="Web.config" />
@@ -183,11 +196,26 @@
     <ItemGroup>
         <Folder Include="App_Data" />
         <Folder Include="Data" />
+        <Folder Include="Models" />
     </ItemGroup>
     <ItemGroup>
         <None Include="packages.config" />
         <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
         <Content Include="Scripts\jquery-3.3.1.min.map" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\DBRepository\DBRepository.csproj">
+        <Project>{7c26b404-cec1-44e3-9e61-d275d1b45194}</Project>
+        <Name>DBRepository</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\DictionaryLibrary\DictionaryLibrary.csproj">
+        <Project>{4c97ca6e-3bd2-469d-8291-855f556d7e0f}</Project>
+        <Name>DictionaryLibrary</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\DictionaryRepository\DictionaryRepository.csproj">
+        <Project>{fb767716-d13e-4eb3-88e8-6118f2c8cca6}</Project>
+        <Name>DictionaryRepository</Name>
+      </ProjectReference>
     </ItemGroup>
     <PropertyGroup>
         <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

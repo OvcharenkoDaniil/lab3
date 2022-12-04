@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Linq;
+using DictionaryLibrary;
 using Newtonsoft.Json;
 
-namespace lab3.Models
+namespace DBRepository
 {
     public class DBRepository : IRepository<DictionaryItem>
     {
@@ -17,7 +17,7 @@ namespace lab3.Models
             //_records = _dbContext.Records;
         }
         
-        string filePath2 = "D:\\Study\\Prog-in-internet\\Labs\\lab3\\lab3\\lab3\\Data\\Data.json";
+        //string filePath2 = "D:\\Study\\Prog-in-internet\\Labs\\lab3\\lab3\\lab3\\Data\\Data.json";
         public void Dispose()
         {
             throw new System.NotImplementedException();

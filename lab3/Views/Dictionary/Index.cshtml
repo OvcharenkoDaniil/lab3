@@ -1,10 +1,10 @@
-﻿@model List<lab3.Models.DictionaryItem>
+﻿@model List<DictionaryLibrary.DictionaryItem>
 @{
     ViewBag.Title = "Home Page";
 }
 
 <div >
-
+    <button>@Html.ActionLink("Add", "Add", "Dictionary")</button>
     <table class="table" style="margin-top: 10px">
         <thead>
         <tr>
@@ -17,14 +17,7 @@
         {
             foreach (var record in Model)
             {
-                <tr>
-                    <td>@record.PhoneNumber</td>
-                    <td>@record.UserSurname</td>
-                    <td>
-                        <div class="btn">@Html.ActionLink("Edit", "Update", new { id = record.UserId })</div>
-                        <div class="btn">@Html.ActionLink("Delete", "Delete", new { id = record.UserId })</div>
-                    </td>
-                </tr>
+                @Html.Partial("DictionaryItem", (object)record)
             }
         }
         else
@@ -36,6 +29,13 @@
             </tr>
         }
     </table>
-    <button>@Html.ActionLink("Add", "Add", "Dictionary")</button>
-
 </div>
+
+
+@* <div> *@
+@*     <button>@Html.ActionLink("Add", "Add", "Dictionary")</button> *@
+@*     @foreach (var record in Model) *@
+@*     { *@
+@*         @Html.Partial("DictionaryItem", (object)record) *@
+@*     } *@
+@* </div> *@
