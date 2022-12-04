@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using lab3.Models;
+
 using Newtonsoft.Json;
 using System.IO;
+using DictionaryLibrary;
+using DictionaryRepository;
 
 namespace lab3.Controllers
 {
     public class DictionaryController : Controller
     {
         private List<DictionaryItem> dictionaryItems = new List<DictionaryItem>();
-        //private DirectoryRepository _directoryRepository = new DirectoryRepository();
-        private DBRepository _directoryRepository = new DBRepository();
+        //private DictionaryRepository.DictionaryRepository _directoryRepository = new DictionaryRepository.DictionaryRepository();
+        private DBRepository.DBRepository _directoryRepository = new DBRepository.DBRepository();
         [HttpGet]
         public ActionResult Index()
         {

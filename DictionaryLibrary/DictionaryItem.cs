@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace lab3.Models
+namespace DictionaryLibrary
 {
     public class DictionaryItem
     {

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using DictionaryLibrary;
 
-namespace lab3.Models
+
+namespace DictionaryRepository
 {
-    public class DirectoryRepository : IRepository<DictionaryItem>
+    public class DictionaryRepository : IRepository<DictionaryItem>
     {
         string filePath2 = "D:\\Study\\Prog-in-internet\\Labs\\lab3\\lab3\\lab3\\Data\\Data.json";
         public void Dispose()

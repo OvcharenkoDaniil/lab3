@@ -1,5 +1,7 @@
 ﻿using System.Data.Entity;
-namespace lab3.Models
+using DictionaryLibrary;
+
+namespace DBRepository
 {
     
         public class DictionaryDbContext : System.Data.Entity.DbContext

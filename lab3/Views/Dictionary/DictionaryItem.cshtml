@@ -1,0 +1,12 @@
+﻿<tr>
+    <td>@Model.PhoneNumber</td>
+    <td>@Model.UserSurname</td>
+    <td>
+        <div class="btn"><p><a href="/Dictionary/Update/@Model.UserId">Обновить</a></p>
+            @* @Html.ActionLink("Edit", "Update", new { id = Model.UserId }) *@
+        </div>
+        <div class="btn"><p><a href="/Dictionary/Delete/@Model.UserId">Удалить</a></p>
+            @* @Html.ActionLink("Delete", "Delete", new { id = Model.UserId }) *@
+        </div>
+    </td>
+</tr>
